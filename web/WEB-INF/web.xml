@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <filter>
+        <filter-name>ProxyFilter</filter-name>
+        <filter-class>org.semanticwb.proxy.ProxyFilter</filter-class>
+        <init-param>
+          <param-name>server</param-name>
+          <!--<param-value>http://192.241.236.31</param-value>-->
+          <param-value>http://www.semanticwebbuilder.org.mx</param-value>
+        </init-param>         
+        <init-param>
+          <param-name>cachePath</param-name>
+          <param-value>/data/cache</param-value>
+        </init-param>         
+    </filter>
+
+    <filter-mapping>
+        <filter-name>ProxyFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <!-- Requerido para WebLogic 11 -->
+        <!--dispatcher>REQUEST</dispatcher-->         
+    </filter-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
