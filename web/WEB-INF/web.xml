@@ -5,7 +5,6 @@
         <filter-class>org.semanticwb.proxy.ProxyFilter</filter-class>
         <init-param>
           <param-name>server</param-name>
-          <!--<param-value>http://192.241.236.31</param-value>-->
           <param-value>http://www.semanticwebbuilder.org.mx</param-value>
         </init-param>         
         <init-param>
