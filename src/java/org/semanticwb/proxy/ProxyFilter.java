@@ -37,6 +37,8 @@ public class ProxyFilter implements Filter
     }
 
     public void doFilter(ServletRequest _request, ServletResponse _response, FilterChain chain) throws IOException, ServletException {
+        try{
+
         HttpServletRequest request=(HttpServletRequest)_request;
         HttpServletResponse response=(HttpServletResponse)_response;
         String uri = request.getRequestURI();
@@ -44,7 +46,7 @@ public class ProxyFilter implements Filter
         //String path = uri.substring(cntx.length());
         //String host = request.getServerName();   
         
-        System.out.println("uri:"+uri);
+        //System.out.println("uri:"+uri);
         if(uri.startsWith("/AdminProxy/"))
         {            
             chain.doFilter(_request, _response);
@@ -141,6 +143,7 @@ public class ProxyFilter implements Filter
             {
                 if(!f.isFile())
                 {
+                    System.out.println("Store Cache File:"+f);
                     FileOutputStream fout=new FileOutputStream(f);
                     Utils.copyStream(res.getInputStream(), fout);
                     FileInputStream fin=new FileInputStream(f);
@@ -161,6 +164,10 @@ public class ProxyFilter implements Filter
             //System.out.println("errm:"+errm);
             
         }     
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public void destroy() {

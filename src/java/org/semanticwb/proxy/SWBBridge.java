@@ -399,7 +399,7 @@ public class SWBBridge
             //System.out.println(con.getHeaderField("Location"));
             if (usedResponse && out!=null) response.sendRedirect(con.getHeaderField("Location"));
             //ret="302:"+con.getHeaderField("Location");
-        } else if (resc == 200)
+        } else if (resc >= 200 && resc < 300)
         {
             //System.out.println("*************** contenido *********************************");
             ret.setContentType(con.getContentType());

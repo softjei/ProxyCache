@@ -64,18 +64,18 @@ public class Utils {
      * Si el flujo de entrada o el de salida es {@code null}.</p>
      */
     public static void copyStream(InputStream in, OutputStream out, int bufferSize) throws IOException {
-        if (in == null) {
-            throw new IOException("Input Stream null");
+        if(in!=null)
+        {
+            if (out == null) {
+                throw new IOException("Ouput Stream null");
+            }
+            byte[] bfile = new byte[bufferSize];
+            int x;
+            while ((x = in.read(bfile, 0, bufferSize)) > -1) {
+                out.write(bfile, 0, x);
+            }
+            in.close();
         }
-        if (out == null) {
-            throw new IOException("Ouput Stream null");
-        }
-        byte[] bfile = new byte[bufferSize];
-        int x;
-        while ((x = in.read(bfile, 0, bufferSize)) > -1) {
-            out.write(bfile, 0, x);
-        }
-        in.close();
         out.flush();
         out.close();
     }
